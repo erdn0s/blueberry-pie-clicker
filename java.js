@@ -298,8 +298,8 @@ setInterval(randomizeWeakSpotPosition, 80);
 
 function weakSpotOnClick ()
 {
-    amount += increaseAmount * multiplierMultiply** weakSpotIncrease;
-    console.log(increaseAmount * multiplierMultiply**weakSpotIncrease)
+    amount += increaseAmount * multiplierMultiply* weakSpotIncrease;
+    console.log(increaseAmount * multiplierMultiply*weakSpotIncrease)
     console.log(weakSpotIncrease);
     saveAmount();
     mainClicker.textContent = amount;
