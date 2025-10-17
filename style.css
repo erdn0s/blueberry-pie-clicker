@@ -2,10 +2,11 @@
 :root
 {
   --backgroundColor: white;
-  --buttonColor1: yellow;
+  --buttonColor1: lightpink;
   --buttonColor2: red;
   --textColor: black;
   --backgroundImage: url(strawberries.png);
+  --topbar: lightgrey;
 }
 
 .darkmode
@@ -15,7 +16,7 @@
   --buttonColor2: purple ;
   --textColor: white;
   --backgroundImage: url(blueberries.png);
-
+ --topbar: black;
 }
 
 body
@@ -154,7 +155,7 @@ padding: 10px;
 }
 #topBar
 {
-    background-color: rgb(0, 0, 0, 0.4);
+    background-color: var(--topbar);
 }
 #UpgradeContainer
 {
@@ -179,4 +180,40 @@ justify-content: center;
     background: linear-gradient(to top, var(--buttonColor1), var(--buttonColor2));
     color: var(--textColor);
     border: 3px solid black;
+}
+#multiplierMultiButton
+{
+    position: relative;
+        width: 20%;
+        border: 2px solid black;
+        color: var(--textColor);
+        background: linear-gradient(to top, var(--buttonColor1), var(--buttonColor2));
+}
+#multiplierMultiButton:hover::after
+{
+    content: "upgrades your multiplier by 2X each upgrade";
+    position: absolute;
+    background: var(--backgroundColor);
+    color: var(--textColor);
+    width: 100%;
+    left: 0;
+    top: 110%;
+}
+#autoClickerMultiply
+{
+    position: relative;
+    width: 20%;
+    border: black 2px solid;
+    color: var(--textColor);
+        background: linear-gradient(to top, var(--buttonColor1), var(--buttonColor2));
+}
+#autoClickerMultiply:hover::after
+{
+    content: "upgrades your auto clicker by 2X each upgrade";
+    position: absolute;
+    background: var(--backgroundColor);
+    color: var(--textColor);
+    width: 100%;
+    left: 0;
+    top: 110%;
 }
