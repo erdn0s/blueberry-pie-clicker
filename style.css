@@ -7,13 +7,14 @@
   --textColor: black;
   --backgroundImage: url(strawberries.png);
   --topbar: lightgrey;
+  
 }
 
 .darkmode
 {
   --backgroundColor: rgb(30, 30, 30);
   --buttonColor1: rgb(0, 0, 87);
-  --buttonColor2: purple ;
+  --buttonColor2: rgb(50, 0, 50 );
   --textColor: white;
   --backgroundImage: url(blueberries.png);
  --topbar: black;
@@ -43,18 +44,8 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#goldenPie
-{
-    position: absolute;
-    height: 10%;
-    bottom: 50%;
-    transition: 200ms ease;
-    z-index: 100;
-}
-#goldenpie:hover
-{
-    height: 20%;
+    height: 100%;
+    width: 100%;
 }
 
 #darkerStrawberries
@@ -67,8 +58,7 @@ body
 
 #mainClicker
 {
-   height: 100%;
-   width: 100%;
+   height: 20%;
    background: none;
    border: none;
    display: flex;
@@ -76,11 +66,14 @@ body
    align-items: center;
    transition: 100ms all;
 }
-#mainClicker:hover
+@media (min-width: 1200px)
 {
- width: 105%;
- height: 101%;
+    #mainClicker
+    {
+        height: 30%;
+    }
 }
+
 
 #mainClickerIMG
 {
@@ -104,8 +97,8 @@ padding: 10px;
 #theLeftDiv
 {
     display: grid;
-    grid-template-columns: 300px;
-    grid-template-rows: 300px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     position: relative;
     text-align: center;
     justify-content: center;
@@ -157,10 +150,7 @@ padding: 10px;
 {
     background-color: var(--topbar);
 }
-#UpgradeContainer
-{
 
-}
 #bottomRightContainer
 {
 
@@ -220,11 +210,66 @@ justify-content: center;
 #weakSpot
 {
     position: absolute;
-    background-color: wheat;
-    width: 60px;
-    height: 60px;
+    background-color: var(--buttonColor2);
+    width: 40px;
+    height: 40px;
     border-radius: 100px;
     left: 60%;
     z-index: 100;
     display: none;
+    opacity: 0.8;
+    border-color: var(--backgroundColor);
+    transition: all 200ms;
+}
+#weakSpot:hover
+{
+    opacity: 1;
+}
+#weakSpotButton
+{
+  position: relative;
+}
+#weakSpotButton:hover::after
+{
+    content: "adds a weak spot to your pie that when clicked gives you more pies than a usual click. (scales with multiplier upgrades)" ;
+    position: absolute;
+    left: 0;
+    top: 118%;
+    width: 100%;
+    height: 100%;
+    color: var(--textColor);
+    background-color: var(--backgroundColor);
+        z-index: 10;
+}
+#multiplierButton
+{
+    position: relative;
+}
+#multiplierButton:hover::after
+{
+    content: "each level increases the amount of pies you get from one click";
+        position: absolute;
+    left: 0;
+    top: 118%;
+    width: 100%;
+    height: 100%;
+    color: var(--textColor);
+    background-color: var(--backgroundColor);
+    z-index: 10;
+}
+#autoClickerButton
+{
+    position: relative;
+}
+#autoClickerButton:hover::after
+{
+    content: "each level increases the amount of pies you get a second";
+            position: absolute;
+    left: 0;
+    top: 118%;
+    width: 100%;
+    height: 100%;
+    color: var(--textColor);
+    background-color: var(--backgroundColor);
+    z-index: 10;
 }
