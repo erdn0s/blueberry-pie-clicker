@@ -63,6 +63,7 @@ function retrieveLocalData()
 
 
 }
+retrieveLocalData();
 function reset ()
 {
      localStorage.setItem("savedAmount", 0);
