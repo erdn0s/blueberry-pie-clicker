@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> pie clicker</title>
+    <link rel="icon" href="bluberry pie.webp">
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js" defer></script>
+    <script src="darkmode.js" defer></script>
+</head>
+<body>
+    <div class="everythingContainer">
+<div id="theLeftDiv"> 
+    <div id="darkerStrawberries"></div>
+    <div id="mainClickerHolder">
+    <button id="mainClicker"  onclick="add()">
+        <img src="cherry pie.png"  id="mainClickerIMG">
+    </button>
+    </div>
+
+
+    <h1 id="counter">0</h1>
+</div>
+
+<div id="theRightDiv">
+    <div id="topBar"></div>
+    <div id="UpgradeContainer">
+            <button id="autoClickerButton" class="upgradeButtons" onclick="upgradeAutoClicker()">auto click</button>
+    <button id="multiplierButton" class="upgradeButtons" onclick="multiplier()"> add more</button>
+    </div>
+    <div id="bottomRightContainer"> 
+        <button id="themeSwitch" onclick="switchThemes()"> theme switch</button>
+    </div>
+ </div>
+     <button onclick="reset()" id="RESETBUTTON">reset progress</button>
+</div>
+
+
+</body>
+</html>

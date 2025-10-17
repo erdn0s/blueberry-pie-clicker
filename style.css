@@ -1,0 +1,182 @@
+
+:root
+{
+  --backgroundColor: white;
+  --buttonColor1: yellow;
+  --buttonColor2: red;
+  --textColor: black;
+  --backgroundImage: url(strawberries.png);
+}
+
+.darkmode
+{
+  --backgroundColor: rgb(30, 30, 30);
+  --buttonColor1: rgb(0, 0, 87);
+  --buttonColor2: purple ;
+  --textColor: white;
+  --backgroundImage: url(blueberries.png);
+
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background-color: var(--backgroundColor);
+}
+.everythingContainer
+{
+    flex-grow: 1;
+    display: flex;
+}
+
+
+.pieClick
+{
+    transform: scale(0.95);
+}
+
+#mainClickerHolder
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#goldenPie
+{
+    position: absolute;
+    height: 10%;
+    bottom: 50%;
+    transition: 200ms ease;
+    z-index: 100;
+}
+#goldenpie:hover
+{
+    height: 20%;
+}
+
+#darkerStrawberries
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+#mainClicker
+{
+   height: 100%;
+   width: 100%;
+   background: none;
+   border: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: 100ms all;
+}
+#mainClicker:hover
+{
+ width: 105%;
+ height: 101%;
+}
+
+#mainClickerIMG
+{
+height: 100%;
+   width: 100%;
+position: relative;
+padding: 10px;
+
+}
+
+
+
+
+#theRightDiv
+{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 60% 20%;
+    flex-grow: 1;
+    }
+#theLeftDiv
+{
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 300px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+        flex-grow: 1;
+            border: 5px solid black;
+    height: 99vh    ;
+        background-image: var(--backgroundImage);
+        background-size: cover;
+        
+
+}
+
+#counter
+{
+    color: white;
+    position: relative;
+}
+
+
+.upgradeButtons
+{
+    width: 90%;
+    height: 80px;
+    border: none;
+    margin: 15px;
+    color: var(--textColor);
+    background: linear-gradient(to top, var(--buttonColor1), var(--buttonColor2)); 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.upgradeButtons::after
+{
+    content: "";
+    position: absolute;
+    background: black;
+    width: 101.5%;
+    height: 110%;
+    z-index: -1;
+}
+#clickPopUp
+{
+    position: absolute;
+    background-color: black;
+}
+#topBar
+{
+    background-color: rgb(0, 0, 0, 0.4);
+}
+#UpgradeContainer
+{
+
+}
+#bottomRightContainer
+{
+
+display: flex;
+justify-content: center;
+}
+
+#RESETBUTTON
+{
+    position: absolute;
+   bottom: 0;
+}
+#themeSwitch
+{
+    position: absolute;
+    border: none;
+    background: linear-gradient(to top, var(--buttonColor1), var(--buttonColor2));
+    color: var(--textColor);
+    border: 3px solid black;
+}
