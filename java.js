@@ -34,6 +34,8 @@ let startGame = false;
 
 function retrieveLocalData()
 {
+    startGame = (localStorage.getItem("gameStarted") === "true");
+
  amount = parseInt(localStorage.getItem("savedAmount"));
  mainClicker.textContent = amount
 
@@ -102,6 +104,7 @@ if (startGame == false)
 {
     reset();
     startGame = true;
+    localStorage.setItem("gameStarted", startGame)
 }
 
 function saveAmount ()
