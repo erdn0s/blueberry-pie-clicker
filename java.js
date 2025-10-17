@@ -15,8 +15,14 @@ let autoClickerAdd = 1;
 let autoClickerMultiply = 1;
 let autoClickerMultiplyCost = 100;
 
+let keepWeakSpotPosition = true;
+let weakSpotBought = false;
+let weakSpotCost = 1000;
+let weakSpotIncrease = 0;
+
 const multiplierMultiButton = document.getElementById("multiplierMultiButton");
 const autoClickerMultiplyButton = document.getElementById("autoClickerMultiply");
+const weakSpotButton = document.getElementById("weakSpotButton");
 
 const mainClicker = document.getElementById("counter");
 const mainButton = document.getElementById("mainClicker");
@@ -24,6 +30,7 @@ const multiplierButton = document.getElementById("multiplierButton");
 const autoClickerButton = document.getElementById("autoClickerButton");
 let clickPopUp = document.getElementById("clickPopUp");
 
+let startGame = false;
 
 function retrieveLocalData()
 {
@@ -47,6 +54,12 @@ function retrieveLocalData()
        autoClickerMultiplyCost = 100*(10**autoClickerAdd);
            autoClickerMultiply = 0.5*(2**autoClickerAdd);
       autoClickerMultiplyButton.textContent = "auto clicker multiplier amount: " + autoClickerMultiply + " cost: " + autoClickerMultiplyCost;
+
+            weakSpotIncrease = parseInt(localStorage.getItem("weakSpotUpgrade"));
+                weakSpotCost = (1000 * 10**weakSpotIncrease)
+                   weakSpotButton.textContent = "weak spot upgrade level: " + weakSpotIncrease + " cost: " + weakSpotCost;
+
+
 }
 function reset ()
 {
@@ -55,12 +68,15 @@ function reset ()
           localStorage.setItem("multiplier", 1);
           localStorage.setItem("multiplierMultiSave", 1);
      localStorage.setItem("autoClickerMultiplyButton", 1);
+            localStorage.setItem("weakSpotUpgrade", 0);
+
 
           amount = 0;
           addAuto = 0;
           increaseAmount = 1;
           multiplierMultiAdd = 1;
           autoClickerAdd = 1;
+          weakSpotIncrease = 0;
 
               autoClickerCost = Math.round(20*1.5**(addAuto + 1));
                    multiplierCost = Math.round(100*1.5**increaseAmount);
@@ -77,7 +93,17 @@ function reset ()
                         autoClickerMultiply = 0.5*(2**autoClickerAdd);
                          autoClickerMultiplyButton.textContent = "auto clicker multiplier amount: " + autoClickerMultiply + " cost: " + autoClickerMultiplyCost;
 
+                                                   weakSpotCost = (1000 * 10**weakSpotIncrease)
+                           weakSpotButton.textContent = "weak spot upgrade level: " + weakSpotIncrease + " cost: " + weakSpotCost;
+
 }
+
+if (startGame == false)
+{
+    reset();
+    startGame = true;
+}
+
 function saveAmount ()
 {
  localStorage.setItem("savedAmount", amount);
@@ -201,6 +227,63 @@ function AutoClicker ()
     makeTextGreenWhenRich();
 }
 setInterval(AutoClicker, 1000);
+
+
+
+let setWeakSpotPosition = document.getElementById("weakSpot");
+let weakSpotY = 0;
+let weakSpotX = 0;
+
+function upgradeWeakSpot ()
+{
+ if (amount >= weakSpotCost)
+ {
+   weakSpotIncrease++;
+   amount -= weakSpotCost
+   weakSpotCost = (1000 * 10**weakSpotIncrease)
+   weakSpotBought = true
+   weakSpotButton.textContent = "weak spot upgrade level: " + weakSpotIncrease + " cost: " + weakSpotCost;
+   saveAmount()
+       setWeakSpotPosition.style.display = "inline-block";
+       localStorage.setItem("weakSpotUpgrade", weakSpotIncrease);
+ }
+}
+
+
+
+function randomizeWeakSpotPosition ()
+{
+    if (weakSpotBought == true)
+{
+    let X = Math.random()*100;
+    let y = Math.random()*100;
+
+    weakSpotX = X;
+    weakSpotY = y;
+if (weakSpotX >= 20 && weakSpotX <= 70 && weakSpotY >= 70 && weakSpotY <= 85 &&  keepWeakSpotPosition)
+{
+  setWeakSpotPosition.style.left = weakSpotX + "%";
+  setWeakSpotPosition.style.bottom = weakSpotY + "%";
+  
+    setWeakSpotPosition.style.display = "block";
+    keepWeakSpotPosition = false;
+    console.log(keepWeakSpotPosition);
+}
+}
+}
+
+setInterval(randomizeWeakSpotPosition, 200);
+
+
+function weakSpotOnClick ()
+{
+    amount += (increaseAmount * multiplierMultiply * weakSpotIncrease)
+    console.log(amount += (increaseAmount * multiplierMultiply * 5))
+    saveAmount();
+    mainClicker.textContent = amount;
+    setWeakSpotPosition.style.display = "none"
+    keepWeakSpotPosition = true;
+}
 
 
 
